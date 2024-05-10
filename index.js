@@ -1,18 +1,19 @@
-//HTTP server => it is create server 
 
-const http = require('http');
-const fs = require('fs');
+const express= require('express');
+const app = express();
 
-//function to create server in nodejs 
-const myServer = http.createServer((req,res)=>{
-    //console.log(req.headers);
-    const log=`${Date.now()}${req.url}:New Req Received\n`;
-    fs.appendFile('log.txt',log,(err,data)=>{
-        res.end("Hello From server");
-    })
-    
+
+app.get('/',(req,res) => {
+    return res.send('Hello from home page');
 });
 
-myServer.listen(8000,()=>{
-    console.log("Server Started")
+app.get('/about',(req,res) => {
+    return res.send('Hello from about page');
+});
+
+function myHandler(req, res) {
+
+}
+app.listen(3000,()=>{
+    console.log('listening on port 3000')
 })
