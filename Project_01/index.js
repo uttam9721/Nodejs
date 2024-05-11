@@ -7,7 +7,16 @@ const PORT =8000;
 
 
 // middleware 
-app.use(express.urlencoded({entended: true}));
+app.use(express.urlencoded({entended: false}));
+app.use((req,res,next)=>{
+    console.log("Hello from middleware 1");
+    next();
+});
+
+app.use((req,res,next)=>{
+    console.log("Hello from middleware 2");
+    next();
+})
 
 //Routes
 
